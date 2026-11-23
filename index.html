@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHer - Your Safety, Our Priority</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <h1>SafeHer</h1>
+    <p>Your Safety, Our Priority</p>
+
+    <nav id="navbar">
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('register')">Register</button>
+        <button onclick="showSection('login')">Login</button>
+        <button onclick="showSection('adminLogin')">Admin</button>
+    </nav>
+</header>
+
+<main class="container">
+
+    <!-- HOME -->
+    <section id="home" class="section home-section">
+        <div class="hero-content">
+            <p class="hero-tag">WOMEN SAFETY MATTERS</p>
+            <h2>Your Safety,<br>Our Priority</h2>
+            <p>
+                A safer tomorrow begins with awareness and preparedness.
+                SafeHer helps you manage emergency contacts and access
+                important safety information.
+            </p>
+
+            <button onclick="showSection('register')">Get Started</button>
+            <button onclick="showSection('login')">Login</button>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Emergency Support</h3>
+                <p>Manage your trusted emergency contacts.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">☎️</div>
+                <h3>Emergency Helplines</h3>
+                <p>Find important emergency helpline information.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌸</div>
+                <h3>Safety Awareness</h3>
+                <p>Explore useful safety tips and information.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER -->
+    <section id="register" class="section hidden">
+        <div class="auth-card">
+            <h2>Create Your Account</h2>
+            <p>Welcome to SafeHer. Let's get started!</p>
+
+            <form id="registerForm">
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <input type="email" id="regEmail" placeholder="Email Address" required>
+                <input type="tel" id="regPhone" placeholder="Phone Number" required>
+                <input type="password" id="regPassword" placeholder="Password" required>
+                <button type="submit">Create Account</button>
+            </form>
+
+            <p id="registerMessage"></p>
+            <p>Already registered?
+                <a href="#" onclick="showSection('login')">Login here</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login" class="section hidden">
+        <div class="auth-card">
+            <h2>Welcome Back!</h2>
+            <p>Login to your SafeHer account.</p>
+
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email Address" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+
+            <p id="loginMessage"></p>
+            <p>New to SafeHer?
+                <a href="#" onclick="showSection('register')">Create an account</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- USER DASHBOARD -->
+    <section id="dashboard" class="section hidden dashboard-section">
+        <h2 id="welcomeMessage">Welcome to Your Dashboard</h2>
+        <p>Everything you need to manage your safety in one place.</p>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card" onclick="showSection('contacts')">
+                <span>📞</span>
+                <h3>Emergency Contacts</h3>
+                <p>Manage trusted contacts</p>
+            </div>
+
+            <div class="dashboard-card" onclick="showSection('sos')">
+                <span>🚨</span>
+                <h3>SOS Demo</h3>
+                <p>Record a demo entry</p>
+            </div>
+
+            <div class="dashboard-card" onclick="showSection('history')">
+                <span>📋</span>
+                <h3>SOS History</h3>
+                <p>View saved demo records</p>
+            </div>
+
+            <div class="dashboard-card" onclick="showSection('profile')">
+                <span>👤</span>
+                <h3>My Profile</h3>
+                <p>Manage your information</p>
+            </div>
+
+            <div class="dashboard-card" onclick="showSection('feedback')">
+                <span>💌</span>
+                <h3>Feedback</h3>
+                <p>Share your suggestions</p>
+            </div>
+
+            <div class="dashboard-card" onclick="showSection('safety')">
+                <span>🌷</span>
+                <h3>Safety Tips</h3>
+                <p>Learn safety practices</p>
+            </div>
+
+            <div class="dashboard-card" onclick="showSection('helplines')">
+                <span>☎️</span>
+                <h3>Emergency Helplines</h3>
+                <p>Important helpline details</p>
+            </div>
+        </div>
+
+        <button onclick="logout()">Logout</button>
+    </section>
+
+    <!-- CONTACTS -->
+    <section id="contacts" class="section hidden">
+        <h2>Emergency Contacts</h2>
+        <p>Add and manage your trusted contacts.</p>
+
+        <form id="contactForm">
+            <input type="text" id="contactName" placeholder="Contact Name" required>
+            <input type="tel" id="contactNumber" placeholder="Contact Number" required>
+            <button type="submit">Save Contact</button>
+        </form>
+
+        <p id="contactMessage"></p>
+        <div id="contactsList"></div>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- SOS -->
+    <section id="sos" class="section hidden">
+        <h2>SOS Demo</h2>
+
+        <div class="info-card">
+            <span class="large-icon">🚨</span>
+            <h3>Emergency Alert Demonstration</h3>
+            <p>
+                This is a demonstration feature. Clicking the button
+                only saves a demo entry in your SOS history.
+            </p>
+            <p><strong>It does not send SMS, make calls, share GPS location
+            or contact emergency services.</strong></p>
+        </div>
+
+        <button class="sos-button" onclick="recordSOS()">Record SOS Demo</button>
+        <p id="sosMessage"></p>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="history" class="section hidden">
+        <h2>SOS Demo History</h2>
+        <p>View your previously saved demo records.</p>
+
+        <div id="historyList"></div>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="section hidden">
+        <h2>My Profile</h2>
+        <p>Update your account information.</p>
+
+        <form id="profileForm">
+            <input type="text" id="profileName" placeholder="Full Name" required>
+            <input type="email" id="profileEmail" placeholder="Email" disabled>
+            <input type="tel" id="profilePhone" placeholder="Phone Number" required>
+            <button type="submit">Update Profile</button>
+        </form>
+
+        <p id="profileMessage"></p>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- FEEDBACK -->
+    <section id="feedback" class="section hidden">
+        <h2>Share Your Feedback</h2>
+        <p>Your suggestions help us improve SafeHer.</p>
+
+        <form id="feedbackForm">
+            <textarea id="feedbackText" placeholder="Write your feedback..." required></textarea>
+            <button type="submit">Submit Feedback</button>
+        </form>
+
+        <p id="feedbackMessage"></p>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- SAFETY TIPS -->
+    <section id="safety" class="section hidden">
+        <h2>Safety Tips</h2>
+        <p>Small precautions can help you stay prepared.</p>
+
+        <div class="tips-grid">
+            <div class="tip-card">
+                <span>👀</span>
+                <h3>Be Aware</h3>
+                <p>Stay aware of your surroundings.</p>
+            </div>
+
+            <div class="tip-card">
+                <span>📍</span>
+                <h3>Share Your Plans</h3>
+                <p>Keep trusted people informed about your travel plans.</p>
+            </div>
+
+            <div class="tip-card">
+                <span>🔋</span>
+                <h3>Keep Your Phone Charged</h3>
+                <p>Maintain sufficient battery when travelling.</p>
+            </div>
+
+            <div class="tip-card">
+                <span>🔐</span>
+                <h3>Protect Information</h3>
+                <p>Keep passwords and personal information private.</p>
+            </div>
+
+            <div class="tip-card">
+                <span>☎️</span>
+                <h3>Save Important Contacts</h3>
+                <p>Keep trusted contact details accessible.</p>
+            </div>
+
+            <div class="tip-card">
+                <span>🌸</span>
+                <h3>Trust Your Instincts</h3>
+                <p>If a situation feels unsafe, seek help from a trusted person.</p>
+            </div>
+        </div>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- HELPLINES -->
+    <section id="helplines" class="section hidden">
+        <h2>Emergency Helplines - India</h2>
+        <p>Important contact information.</p>
+
+        <div class="helpline-card">
+            <h3>National Emergency Number</h3>
+            <a href="tel:112">112</a>
+            <p>Emergency response assistance.</p>
+        </div>
+
+        <div class="helpline-card">
+            <h3>Women Helpline</h3>
+            <a href="tel:181">181</a>
+            <p>Women helpline service. Availability and routing may vary by state.</p>
+        </div>
+
+        <div class="helpline-card">
+            <h3>Child Helpline</h3>
+            <a href="tel:1098">1098</a>
+            <p>Child protection and assistance.</p>
+        </div>
+
+        <p>For an emergency, contact the appropriate official service directly.</p>
+
+        <button onclick="showSection('dashboard')">Back to Dashboard</button>
+    </section>
+
+    <!-- ADMIN LOGIN -->
+    <section id="adminLogin" class="section hidden">
+        <div class="auth-card">
+            <h2>Admin Login</h2>
+
+            <form id="adminLoginForm">
+                <input type="text" id="adminUsername" placeholder="Admin Username" required>
+                <input type="password" id="adminPassword" placeholder="Admin Password" required>
+                <button type="submit">Admin Login</button>
+            </form>
+
+            <p id="adminLoginMessage"></p>
+            <button onclick="showSection('login')">User Login</button>
+        </div>
+    </section>
+
+    <!-- ADMIN DASHBOARD -->
+    <section id="adminDashboard" class="section hidden">
+        <h2>Admin Dashboard</h2>
+
+        <div class="info-card">
+            <h3>Total Registered Users</h3>
+            <h2 id="totalUsers">0</h2>
+        </div>
+
+        <h3>Registered Users</h3>
+        <div id="adminUsers"></div>
+
+        <h3>User Feedback</h3>
+        <div id="adminFeedback"></div>
+
+        <h3>SOS Demo Records</h3>
+        <div id="adminSOS"></div>
+
+        <button onclick="adminLogout()">Admin Logout</button>
+    </section>
+
+</main>
+
+<footer>
+    <h3>SafeHer 🌸</h3>
+    <p>Your Safety, Our Priority</p>
+    <p>© 2026 SafeHer | Women Safety & Emergency Alert System</p>
+    <p class="footer-note">An awareness and safety-management project.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
